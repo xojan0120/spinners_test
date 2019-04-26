@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { css } from '@emotion/core';
+// First way to import
+import { RingLoader as Loader } from 'react-spinners';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+`;
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    }
+  }
+  render() {
+    return (
+      <div className='sweet-loading'>
+        <Loader
+          css={override}
+          sizeUnit={"px"}
+          size={300}
+          color={'#36D7B7'}
+          loading={this.state.loading}
+        />
+      </div> 
+    )
+  }
 }
-
 export default App;
